@@ -154,8 +154,8 @@ export default function Partnerships() {
               />
               <div className="mt-10 space-y-5">
                 {[
-                  [<Phone key="p" className="w-4 h-4" />, 'Partnerships Desk', '+91 612 250 0000', 'tel:+916122500000'],
-                  [<Mail key="m" className="w-4 h-4" />, 'Tender Inquiries', 'tenders@diarchgroup.in', 'mailto:tenders@diarchgroup.in'],
+                  [<Phone key="p" className="w-4 h-4" />, 'Partnerships Desk', '+91 92292 66955', 'tel:+919229266955'],
+                  [<Mail key="m" className="w-4 h-4" />, 'Tender Inquiries', 'info@diarchgroup.com', 'mailto:info@diarchgroup.com'],
                   [<FileText key="f" className="w-4 h-4" />, 'Capability Statement', 'Download PDF (2.4 MB)', '#download'],
                 ].map(([icon, label, value, href], i) => (
                   <div key={i} className="flex items-start gap-4 bg-card border border-border p-5">

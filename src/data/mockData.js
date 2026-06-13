@@ -3,7 +3,7 @@ export const KPI_STATS = [
     { label: 'Districts Served', value: 38, suffix: '', desc: 'Pan-Bihar operational reach' },
     { label: 'Government Partnerships', value: 64, suffix: '+', desc: 'Active public-sector engagements' },
     { label: 'Years of Experience', value: 22, suffix: '', desc: 'Continuous execution record' },
-    { label: 'Infrastructure Delivered', value: 1840, suffix: ' Cr', desc: 'Total contract value (INR)' },
+    { label: 'Infrastructure Delivered', value: 999, suffix: ' Cr', desc: 'Total contract value (INR)' },
 ];
 
 export const SERVICES = [
