@@ -6,7 +6,7 @@ Marketing and portfolio website for **Diarch Group**, a Class-I infrastructure c
 
 | Layer | Library |
 |---|---|
-| Framework | React 19 (CRA via CRACO) |
+| Framework | React 19 (Vite) |
 | Routing | React Router v7 |
 | Styling | Tailwind CSS v3 + CSS variables |
 | UI Primitives | Radix UI |
@@ -31,7 +31,7 @@ cd dinfra_cleaned
 npm install
 
 # 3. Start dev server
-npm start
+npm run dev
 ```
 
 App runs at `http://localhost:3000`.
@@ -40,9 +40,9 @@ App runs at `http://localhost:3000`.
 
 | Command | Description |
 |---|---|
-| `npm start` | Dev server with hot reload |
-| `npm run build` | Production build → `build/` |
-| `npm test` | Run test suite |
+| `npm run dev` | Dev server with hot reload (alias: `npm start`) |
+| `npm run build` | Production build → `dist/` |
+| `npm run preview` | Serve the production build locally |
 
 ## Project Structure
 
@@ -78,7 +78,7 @@ src/
 import { Button } from '@/components/ui/button';
 ```
 
-Configured in [craco.config.js](craco.config.js).
+Configured in [vite.config.js](vite.config.js) (and [jsconfig.json](jsconfig.json) for editor resolution).
 
 ## Routing
 
@@ -100,6 +100,6 @@ Configured in [craco.config.js](craco.config.js).
 npm run build
 ```
 
-Output in `build/`. Deploy to any static host (Vercel, Netlify, S3 + CloudFront, etc.).
+Output in `dist/`. Deploy to any static host (Vercel, Netlify, S3 + CloudFront, etc.).
 
 For SPA routing on static hosts, redirect all 404s to `index.html`.

@@ -12,7 +12,7 @@ import { Logo } from "../brand/Logo";
 
 export const Footer = () => {
   return (
-    <footer className="bg-navy-deep text-white/80 mt-24">
+    <footer className="bg-navy-deep text-white/80">
       <div className="h-[2px] bg-gradient-to-r from-transparent via-accent to-transparent" />
 
       <div className="container-page pt-20 pb-10">

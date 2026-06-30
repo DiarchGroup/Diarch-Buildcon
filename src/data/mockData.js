@@ -440,31 +440,10 @@ export const NEWS_ITEMS = [
 export const LEADERSHIP = [
     {
         id: 'l1',
-        name: 'Anand Pratap Singh',
-        role: 'Chairman & Managing Director',
-        bio: 'Three decades in public infrastructure execution. Former advisor to Bihar State Infrastructure Development Authority.',
-        initials: 'AP'
-    },
-    {
-        id: 'l2',
-        name: 'Vikram Choudhary',
-        role: 'Executive Director — Operations',
-        bio: 'Led delivery of over 90 highway and bridge projects across Bihar, Jharkhand and Uttar Pradesh.',
-        initials: 'VC'
-    },
-    {
-        id: 'l3',
-        name: 'Dr. Meera Kashyap',
-        role: 'Chief Engineer — Design & Quality',
-        bio: 'PhD in Structural Engineering, IIT Roorkee. Specialist in long-span bridges and seismic-zone construction.',
-        initials: 'MK'
-    },
-    {
-        id: 'l4',
-        name: 'Rohit Anand',
-        role: 'Director — Government Partnerships',
-        bio: 'Tendering, contract management and public-sector liaison across central ministries and Bihar state departments.',
-        initials: 'RA'
+        name: 'Ranjan Kumar Ojha',
+        role: 'Chief Executive Officer',
+        bio: 'Leads Diarch Group across strategy, execution and government partnerships. Decades of hands-on experience delivering public infrastructure and large-scale civil works across Bihar.',
+        initials: 'RO'
     },
 ];
 

@@ -1,11 +1,13 @@
 import { motion } from 'framer-motion';
-import { Compass, Target, Eye, Users, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { PageHeader } from '../components/common/PageHeader';
 import { SectionHeading } from '../components/common/SectionHeading';
 import { FadeUp } from '../components/common/FadeUp';
+import { FeatureColumns } from '../components/common/FeatureColumns';
 import { Button } from '../components/ui/button';
 import { LEADERSHIP, CORE_VALUES } from '../data/mockData';
+import profileImg from '../lib/profileimg.webp';
 
 const TIMELINE = [
   { year: '2003', title: 'Founded in Patna', desc: 'Diarch Group incorporated to undertake civil works for the Bihar state government.' },
@@ -52,21 +54,15 @@ export default function About() {
             </FadeUp>
           </div>
 
-          <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              [<Compass key="m" className="w-5 h-5" />, 'Mission', 'To deliver public infrastructure that is engineered to last, executed with integrity and documented to standard.'],
-              [<Eye key="v" className="w-5 h-5" />, 'Vision', 'To be the most trusted execution partner for state and central public-infrastructure programmes in eastern India.'],
-              [<Target key="p" className="w-5 h-5" />, 'Promise', 'On every contract: transparent bidding, calibrated execution, full compliance, on-time delivery.'],
-            ].map(([icon, title, body], i) => (
-              <FadeUp key={title} delay={i * 0.1} className="bg-card border border-border p-8 relative">
-                <div className="absolute top-0 left-0 h-1 w-12 bg-accent" />
-                <div className="w-12 h-12 bg-accent/10 border border-accent/30 text-accent flex items-center justify-center mb-6">
-                  {icon}
-                </div>
-                <h3 className="text-xl font-semibold text-foreground">{title}</h3>
-                <p className="mt-3 text-[14px] leading-relaxed text-muted-foreground">{body}</p>
-              </FadeUp>
-            ))}
+          <div className="mt-16">
+            <FeatureColumns
+              cols={3}
+              items={[
+                { title: 'Mission', desc: 'To deliver public infrastructure that is engineered to last, executed with integrity and documented to standard.' },
+                { title: 'Vision', desc: 'To be the most trusted execution partner for state and central public-infrastructure programmes in eastern India.' },
+                { title: 'Promise', desc: 'On every contract: transparent bidding, calibrated execution, full compliance, on-time delivery.' },
+              ]}
+            />
           </div>
         </div>
       </section>
@@ -112,22 +108,24 @@ export default function About() {
         <div className="container-page">
           <SectionHeading
             eyebrow="Leadership"
-            title={<>The team that signs off on every project.</>}
-            description="Four leaders, decades of public infrastructure execution between them. Every major project carries their personal sign-off."
+            title={<>The leadership that signs off on every project.</>}
+            description="Decades of public infrastructure execution. Every major project carries a personal sign-off."
           />
-          <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {LEADERSHIP.map((l, i) => (
-              <FadeUp key={l.id} delay={i * 0.06} className="bg-card border border-border overflow-hidden group">
-                <div className="aspect-[4/5] bg-navy-deep relative flex items-center justify-center overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-navy" />
-                  <div className="absolute inset-0 grid-pattern opacity-[0.08]" />
-                  <span className="relative font-serif text-7xl text-accent font-medium">{l.initials}</span>
+          <div className="mt-14 max-w-3xl mx-auto">
+            {LEADERSHIP.map((l) => (
+              <FadeUp key={l.id} className="bg-card border border-border overflow-hidden group grid grid-cols-1 sm:grid-cols-2">
+                <div className="aspect-[4/5] sm:aspect-auto bg-navy-deep relative overflow-hidden">
+                  <img
+                    src={profileImg}
+                    alt={l.name}
+                    className="w-full h-full object-cover object-top"
+                  />
                   <div className="absolute bottom-0 left-0 right-0 h-1 bg-accent" />
                 </div>
-                <div className="p-6">
-                  <h3 className="text-[16px] font-semibold text-foreground">{l.name}</h3>
-                  <p className="mt-1 text-[11.5px] tracking-[0.14em] uppercase text-accent font-semibold">{l.role}</p>
-                  <p className="mt-4 text-[13px] leading-relaxed text-muted-foreground">{l.bio}</p>
+                <div className="p-8 flex flex-col justify-center">
+                  <h3 className="text-[22px] font-semibold text-foreground">{l.name}</h3>
+                  <p className="mt-1.5 text-[12px] tracking-[0.14em] uppercase text-accent font-semibold">{l.role}</p>
+                  <p className="mt-5 text-[14px] leading-relaxed text-muted-foreground">{l.bio}</p>
                 </div>
               </FadeUp>
             ))}
@@ -146,14 +144,8 @@ export default function About() {
             title={<>The principles we hire for, and judge ourselves by.</>}
             description="Every member of the organisation — from site engineer to managing director — is held to these five operating principles."
           />
-          <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
-            {CORE_VALUES.map((v, i) => (
-              <FadeUp key={v.title} delay={i * 0.06} className="bg-white/[0.04] backdrop-blur-sm border border-white/10 p-6 relative">
-                <span className="absolute top-3 right-4 font-mono-num text-[12px] text-accent">0{i + 1}</span>
-                <h3 className="text-[16px] font-semibold text-white mt-4">{v.title}</h3>
-                <p className="mt-3 text-[13px] leading-relaxed text-white/65">{v.desc}</p>
-              </FadeUp>
-            ))}
+          <div className="mt-12">
+            <FeatureColumns cols={5} dark items={CORE_VALUES.map((v) => ({ title: v.title, desc: v.desc }))} />
           </div>
 
           <div className="mt-20 pt-10 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">

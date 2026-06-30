@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { PageHeader } from '../components/common/PageHeader';
 import { SectionHeading } from '../components/common/SectionHeading';
 import { FadeUp } from '../components/common/FadeUp';
+import { FeatureColumns } from '../components/common/FeatureColumns';
 import { Button } from '../components/ui/button';
 import { SERVICES, PROCESS_STEPS } from '../data/mockData';
 
@@ -63,40 +64,24 @@ export default function Capabilities() {
             description="Each vertical is run by a dedicated engineering manager with full P&L accountability for delivery, quality and safety."
           />
 
-          <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-6">
-            {SERVICES.map((svc, i) => {
-              const Icon = Icons[svc.icon] || Icons.Building2;
-              return (
-                <FadeUp
-                  key={svc.id}
-                  delay={i * 0.05}
-                  className="group bg-card border border-border p-8 lg:p-10 transition-all duration-300 hover:shadow-elegant hover:border-primary/30 relative overflow-hidden"
-                >
-                  <div className="flex items-start justify-between mb-6">
-                    <div className="w-14 h-14 bg-primary text-primary-foreground flex items-center justify-center">
-                      <Icon className="w-6 h-6 text-accent" strokeWidth={1.6} />
-                    </div>
-                    <span className="font-mono-num text-[11px] tracking-[0.14em] text-muted-foreground">
-                      0{i + 1}
-                    </span>
-                  </div>
-                  <h3 className="text-xl lg:text-2xl font-semibold tracking-tight text-foreground">
-                    {svc.title}
-                  </h3>
-                  <p className="mt-4 text-[14px] leading-relaxed text-muted-foreground">
-                    {svc.desc}
-                  </p>
-                  <div className="mt-7 pt-6 border-t border-border grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="mt-12">
+            <FeatureColumns
+              cols={2}
+              items={SERVICES.map((svc) => ({
+                title: svc.title,
+                desc: svc.desc,
+                meta: (
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-4 gap-y-2.5">
                     {svc.capabilities.map((cap) => (
-                      <div key={cap} className="flex items-start gap-2 text-[12.5px] text-foreground/75">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-accent mt-0.5 flex-shrink-0" />
+                      <div key={cap} className="flex items-start gap-2 font-tech text-[11px] uppercase tracking-[0.06em] text-foreground/60">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-accent mt-px flex-shrink-0" />
                         {cap}
                       </div>
                     ))}
                   </div>
-                </FadeUp>
-              );
-            })}
+                ),
+              }))}
+            />
           </div>
         </div>
       </section>
@@ -109,25 +94,24 @@ export default function Capabilities() {
             title={<>Three pillars of disciplined execution.</>}
             description="The same framework applied to every project — regardless of scale, sector or location."
           />
-          <div className="mt-14 grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {FRAMEWORK.map((f, i) => (
-              <FadeUp key={f.title} delay={i * 0.08} className="bg-card border border-border p-8 relative">
-                <div className="absolute top-0 left-0 h-1 w-12 bg-accent" />
-                <div className="w-12 h-12 bg-accent/10 border border-accent/30 text-accent flex items-center justify-center mb-6">
-                  {f.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-foreground">{f.title}</h3>
-                <p className="mt-3 text-[13.5px] leading-relaxed text-muted-foreground">{f.desc}</p>
-                <ul className="mt-6 pt-6 border-t border-border space-y-3">
-                  {f.points.map((p) => (
-                    <li key={p} className="flex items-start gap-2 text-[13px] text-foreground/80">
-                      <span className="w-1 h-1 bg-accent mt-2" />
-                      {p}
-                    </li>
-                  ))}
-                </ul>
-              </FadeUp>
-            ))}
+          <div className="mt-12">
+            <FeatureColumns
+              cols={3}
+              items={FRAMEWORK.map((f) => ({
+                title: f.title,
+                desc: f.desc,
+                meta: (
+                  <ul className="space-y-2.5">
+                    {f.points.map((p) => (
+                      <li key={p} className="flex items-start gap-2 font-tech text-[11px] uppercase tracking-[0.06em] text-foreground/60">
+                        <span className="w-1 h-1 bg-accent mt-1.5 flex-shrink-0" />
+                        {p}
+                      </li>
+                    ))}
+                  </ul>
+                ),
+              }))}
+            />
           </div>
         </div>
       </section>
