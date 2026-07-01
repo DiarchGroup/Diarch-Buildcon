@@ -1,9 +1,9 @@
 export const KPI_STATS = [
-    { label: 'Projects Completed', value: 248, suffix: '+', desc: 'Across infrastructure verticals' },
-    { label: 'Districts Served', value: 38, suffix: '', desc: 'Pan-Bihar operational reach' },
-    { label: 'Government Partnerships', value: 64, suffix: '+', desc: 'Active public-sector engagements' },
-    { label: 'Years of Experience', value: 22, suffix: '', desc: 'Continuous execution record' },
-    { label: 'Infrastructure Delivered', value: 999, suffix: ' Cr', desc: 'Total contract value (INR)' },
+    { label: 'Projects Completed', value: 20, suffix: '+', desc: 'Across infrastructure verticals' },
+    { label: 'Districts Served', value: 12, suffix: '', desc: 'Pan-Bihar operational reach' },
+    { label: 'Government Partnerships', value: 24, suffix: '+', desc: 'Active public-sector engagements' },
+    { label: 'Years of Experience', value: 10, suffix: '', desc: 'Continuous execution record' },
+    { label: 'Infrastructure Delivered', value: 149, suffix: ' Cr+', desc: 'Total contract value (INR)' },
 ];
 
 export const SERVICES = [
