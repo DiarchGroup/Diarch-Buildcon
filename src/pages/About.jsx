@@ -6,6 +6,7 @@ import { SectionHeading } from '../components/common/SectionHeading';
 import { FadeUp } from '../components/common/FadeUp';
 import { FeatureColumns } from '../components/common/FeatureColumns';
 import { Button } from '../components/ui/button';
+import { useSEO } from '../hooks/useSEO';
 import { LEADERSHIP, CORE_VALUES } from '../data/mockData';
 import profileImg from '../lib/profileimg.webp';
 
@@ -19,6 +20,13 @@ const TIMELINE = [
 ];
 
 export default function About() {
+  useSEO({
+    title: 'About Diarch Buildcon | Government Infrastructure Contractor',
+    description:
+      'Founded in 2003, Diarch Buildcon is the execution-led infrastructure arm of Diarch Group, delivering government road, building, and public works projects across Bihar.',
+    path: '/about',
+  });
+
   return (
     <main data-testid="page-about">
       <PageHeader
@@ -27,6 +35,7 @@ export default function About() {
         description="Founded in 2003, Diarch Group operates as the trusted execution partner for central ministries and Bihar state departments. Twenty-two years, 248+ projects, one operating philosophy: deliver on commitment."
         breadcrumbs={[{ label: 'About' }]}
         image="https://images.pexels.com/photos/34690264/pexels-photo-34690264.jpeg?auto=compress&cs=tinysrgb&w=2200"
+        imageAlt="Diarch Buildcon leadership and site engineering team"
       />
 
       {/* Mission / Vision */}

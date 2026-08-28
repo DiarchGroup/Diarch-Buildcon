@@ -7,12 +7,24 @@ import {
 } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { FadeUp } from '../components/common/FadeUp';
+import { useSEO } from '../hooks/useSEO';
 import { FEATURED_PROJECTS } from '../data/mockData';
 
 export default function ProjectDetail() {
   const { slug } = useParams();
   const project = FEATURED_PROJECTS.find((p) => p.slug === slug);
   const [activeImage, setActiveImage] = useState(0);
+
+  useSEO(
+    project
+      ? {
+          title: `${project.title} | Diarch Buildcon`,
+          description: `${project.scope} A ${project.type.toLowerCase()} project delivered by Diarch Buildcon in ${project.location} for ${project.client}.`,
+          path: `/projects/${project.slug}`,
+          image: project.image,
+        }
+      : { title: 'Project Not Found | Diarch Buildcon' },
+  );
 
   if (!project) return <Navigate to="/projects" replace />;
 

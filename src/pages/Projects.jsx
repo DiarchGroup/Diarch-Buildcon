@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Search, MapPin, Calendar, Wallet, ArrowUpRight } from 'lucide-react';
 import { PageHeader } from '../components/common/PageHeader';
+import { useSEO } from '../hooks/useSEO';
 import { FEATURED_PROJECTS } from '../data/mockData';
 
 const CATEGORIES = [
@@ -16,6 +17,13 @@ const CATEGORIES = [
 const YEARS = ['all', '2024', '2023', '2022'];
 
 export default function Projects() {
+  useSEO({
+    title: 'Government Infrastructure Projects in Bihar | Diarch Buildcon',
+    description:
+      'Browse Diarch Buildcon\'s portfolio of government road, building, water, and industrial infrastructure projects delivered across Bihar.',
+    path: '/projects',
+  });
+
   const [cat, setCat] = useState('all');
   const [year, setYear] = useState('all');
   const [query, setQuery] = useState('');
@@ -41,6 +49,7 @@ export default function Projects() {
         description="Eight verticals, 38 districts, 248+ completed projects. Browse engagements by category, year and geography."
         breadcrumbs={[{ label: 'Projects' }]}
         image="https://images.unsplash.com/photo-1529926691761-20fb82067c71?auto=format&fit=crop&w=2200&q=80"
+        imageAlt="Diarch Buildcon infrastructure project portfolio in Bihar"
       />
 
       <section className="py-12 lg:py-16 bg-background">

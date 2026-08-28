@@ -6,6 +6,7 @@ import { SectionHeading } from '../components/common/SectionHeading';
 import { FadeUp } from '../components/common/FadeUp';
 import { FeatureColumns } from '../components/common/FeatureColumns';
 import { Button } from '../components/ui/button';
+import { useSEO } from '../hooks/useSEO';
 import { SERVICES, PROCESS_STEPS } from '../data/mockData';
 
 const FRAMEWORK = [
@@ -45,6 +46,13 @@ const FRAMEWORK = [
 ];
 
 export default function Capabilities() {
+  useSEO({
+    title: 'Infrastructure Construction Capabilities | Diarch Buildcon',
+    description:
+      'Engineering, safety, and project-control capabilities behind Diarch Buildcon\'s government road, building, water, and industrial infrastructure delivery across Bihar.',
+    path: '/capabilities',
+  });
+
   return (
     <main data-testid="page-capabilities">
       <PageHeader
@@ -53,6 +61,7 @@ export default function Capabilities() {
         description="From concept feasibility to operational handover — every capability under one delivery framework. Specialised teams, calibrated equipment, and discipline-led engineering managers."
         breadcrumbs={[{ label: 'Capabilities' }]}
         image="https://images.pexels.com/photos/5504388/pexels-photo-5504388.jpeg?auto=compress&cs=tinysrgb&w=2200"
+        imageAlt="Diarch Buildcon engineering team executing an infrastructure project"
       />
 
       {/* Verticals grid */}
