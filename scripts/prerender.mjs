@@ -8,7 +8,8 @@
 // markup to dist/<route>/index.html. The client bundle still loads and
 // takes over normally for real visitors (see src/index.jsx).
 import { preview } from 'vite';
-import { chromium } from 'playwright';
+import { chromium } from 'playwright-core';
+import sparticuzChromium from '@sparticuz/chromium';
 import { existsSync } from 'node:fs';
 import { writeFile, mkdir } from 'node:fs/promises';
 import path from 'node:path';
@@ -34,7 +35,21 @@ const STATIC_ROUTES = [
 const PROJECT_ROUTES = FEATURED_PROJECTS.map((p) => `/projects/${p.slug}`);
 const ROUTES = [...STATIC_ROUTES, ...PROJECT_ROUTES];
 
-const CHROMIUM_PATH = '/opt/pw-browsers/chromium';
+// A locally-installed browser (e.g. in a dev sandbox) is preferred when
+// present; otherwise fall back to the serverless-friendly Chromium build
+// used on Vercel/AWS Lambda-style build environments.
+const LOCAL_CHROMIUM_PATH = '/opt/pw-browsers/chromium';
+
+async function launchBrowser() {
+  if (existsSync(LOCAL_CHROMIUM_PATH)) {
+    return chromium.launch({ executablePath: LOCAL_CHROMIUM_PATH });
+  }
+  return chromium.launch({
+    args: sparticuzChromium.args,
+    executablePath: await sparticuzChromium.executablePath(),
+    headless: true,
+  });
+}
 
 async function main() {
   const server = await preview({
@@ -43,9 +58,7 @@ async function main() {
   });
   const base = server.resolvedUrls.local[0];
 
-  const browser = await chromium.launch({
-    executablePath: existsSync(CHROMIUM_PATH) ? CHROMIUM_PATH : undefined,
-  });
+  const browser = await launchBrowser();
   const page = await browser.newPage();
 
   for (const route of ROUTES) {
@@ -81,6 +94,10 @@ async function main() {
 }
 
 main().catch((err) => {
-  console.error(err);
-  process.exit(1);
+  // Prerendering is a progressive enhancement on top of the plain Vite
+  // build (dist/ already has a working, if empty-shelled, SPA at this
+  // point). Never fail the whole production build/deployment over it —
+  // log and fall back to the un-prerendered output instead.
+  console.error('[prerender] skipped due to error:', err);
+  process.exit(0);
 });
