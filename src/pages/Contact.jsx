@@ -5,6 +5,7 @@ import { MapPin, Phone, Mail, Clock, ArrowRight, MessageCircle, Send } from 'luc
 import { PageHeader } from '../components/common/PageHeader';
 import { FadeUp } from '../components/common/FadeUp';
 import { Button } from '../components/ui/button';
+import { useSEO } from '../hooks/useSEO';
 import { FAQS } from '../data/mockData';
 
 const OFFICES = [
@@ -32,6 +33,13 @@ const OFFICES = [
 ];
 
 export default function Contact() {
+  useSEO({
+    title: 'Contact Us | Diarch Buildcon',
+    description:
+      'Reach Diarch Buildcon\'s regional offices across Bihar for partnership, tender, and project inquiries with government infrastructure teams.',
+    path: '/contact',
+  });
+
   const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' });
   const [loading, setLoading] = useState(false);
   const [openFaq, setOpenFaq] = useState(0);
@@ -54,6 +62,7 @@ export default function Contact() {
         description="Three regional offices across Bihar. Dedicated desks for partnerships, tenders, careers and general inquiries — every channel actively monitored during business hours."
         breadcrumbs={[{ label: 'Contact' }]}
         image="https://images.pexels.com/photos/7104647/pexels-photo-7104647.jpeg?auto=compress&cs=tinysrgb&w=2200"
+        imageAlt="Diarch Buildcon regional office contact location in Bihar"
       />
 
       {/* Direct channels */}

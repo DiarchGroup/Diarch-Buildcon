@@ -4,7 +4,7 @@ import { ChevronRight, Home as HomeIcon, ArrowDown } from 'lucide-react';
 
 const ease = [0.22, 1, 0.36, 1];
 
-export const PageHeader = ({ eyebrow, title, description, breadcrumbs = [], image }) => {
+export const PageHeader = ({ eyebrow, title, description, breadcrumbs = [], image, imageAlt = '' }) => {
   const last = breadcrumbs.length > 0 ? breadcrumbs[breadcrumbs.length - 1].label : null;
 
   return (
@@ -84,7 +84,7 @@ export const PageHeader = ({ eyebrow, title, description, breadcrumbs = [], imag
                     {last && <span>{last}</span>}
                   </div>
                   <div className="relative overflow-hidden">
-                    <img src={image} alt="" className="w-full h-[300px] xl:h-[360px] object-cover" loading="eager" />
+                    <img src={image} alt={imageAlt} className="w-full h-[300px] xl:h-[360px] object-cover" loading="eager" />
                     <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/70 via-transparent to-transparent" />
                   </div>
                 </div>

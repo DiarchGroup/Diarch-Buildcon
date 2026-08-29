@@ -3,6 +3,7 @@ import { PageHeader } from '../components/common/PageHeader';
 import { SectionHeading } from '../components/common/SectionHeading';
 import { FadeUp } from '../components/common/FadeUp';
 import { Button } from '../components/ui/button';
+import { useSEO } from '../hooks/useSEO';
 import { CERTIFICATIONS } from '../data/mockData';
 
 const CATEGORIES = [
@@ -24,6 +25,13 @@ const CATEGORIES = [
 ];
 
 export default function Certifications() {
+  useSEO({
+    title: 'Certifications & Compliance | Diarch Buildcon',
+    description:
+      'ISO and statutory certifications behind Diarch Buildcon\'s compliance-driven infrastructure delivery for government projects across Bihar.',
+    path: '/certifications',
+  });
+
   return (
     <main data-testid="page-certifications">
       <PageHeader
@@ -32,6 +40,7 @@ export default function Certifications() {
         description="Every certification on this page is current, traceable to its issuing body and validated by independent audit. Documentation is available on formal request."
         breadcrumbs={[{ label: 'Certifications' }]}
         image="https://images.pexels.com/photos/7104647/pexels-photo-7104647.jpeg?auto=compress&cs=tinysrgb&w=2200"
+        imageAlt="Compliance audit documentation for Diarch Buildcon certifications"
       />
 
       {/* All certifications gallery */}

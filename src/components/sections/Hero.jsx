@@ -40,8 +40,8 @@ export const Hero = () => {
                 transition={{ duration: 0.8, delay: 0.1, ease }}
                 className="mt-7 font-serif text-[clamp(2rem,8vw,4.25rem)] font-semibold leading-[1.02] tracking-[-0.025em]"
               >
-                Building infrastructure
-                <span className="block italic font-normal text-accent">that powers progress.</span>
+                Government Infrastructure &amp; Road
+                <span className="block italic font-normal text-accent">Construction Contractor in Bihar</span>
               </motion.h1>
 
               <motion.p
@@ -50,8 +50,9 @@ export const Hero = () => {
                 transition={{ duration: 0.7, delay: 0.25, ease }}
                 className="mt-7 text-[16px] lg:text-[17px] leading-[1.7] text-white/60 max-w-xl"
               >
-                Trusted execution partner for public infrastructure and government
-                projects across Bihar and Eastern India.
+                Building infrastructure that powers progress — trusted execution
+                partner for public infrastructure and government projects across
+                Bihar and Eastern India.
               </motion.p>
 
               <motion.div

@@ -6,6 +6,7 @@ import { PageHeader } from '../components/common/PageHeader';
 import { SectionHeading } from '../components/common/SectionHeading';
 import { FadeUp } from '../components/common/FadeUp';
 import { Button } from '../components/ui/button';
+import { useSEO } from '../hooks/useSEO';
 
 const EMPANELMENTS = [
   { name: 'CPWD', tag: 'Class-I Contractor', desc: 'Central Public Works Department — eligible to bid on central government works of all values.' },
@@ -24,6 +25,13 @@ const PROCUREMENT = [
 ];
 
 export default function Partnerships() {
+  useSEO({
+    title: 'Government Partnerships & Empanelments | Diarch Buildcon',
+    description:
+      'Diarch Buildcon\'s partnership desk for central ministries, Bihar state departments, and statutory authorities — from tender pre-qualification to contract execution.',
+    path: '/partnerships',
+  });
+
   const [form, setForm] = useState({ org: '', name: '', designation: '', email: '', phone: '', subject: '', message: '' });
   const [loading, setLoading] = useState(false);
 
@@ -45,6 +53,7 @@ export default function Partnerships() {
         description="From tender pre-qualification to contract execution and ongoing project delivery — a single point of contact for central ministries, state departments and statutory authorities."
         breadcrumbs={[{ label: 'Partnerships' }]}
         image="https://images.pexels.com/photos/34690264/pexels-photo-34690264.jpeg?auto=compress&cs=tinysrgb&w=2200"
+        imageAlt="Government partnership discussion for Diarch Buildcon infrastructure projects"
       />
 
       {/* Empanelments */}

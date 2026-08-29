@@ -3,11 +3,19 @@ import { motion } from 'framer-motion';
 import { Search, Calendar, ArrowUpRight, Tag } from 'lucide-react';
 import { PageHeader } from '../components/common/PageHeader';
 import { FadeUp } from '../components/common/FadeUp';
+import { useSEO } from '../hooks/useSEO';
 import { NEWS_ITEMS } from '../data/mockData';
 
 const CATEGORIES = ['All', 'Tender Win', 'Project Update', 'Recognition', 'Industry Insight'];
 
 export default function News() {
+  useSEO({
+    title: 'News & Updates | Diarch Buildcon',
+    description:
+      'Tender wins, project milestones, and infrastructure industry insights from Diarch Buildcon, government infrastructure contractor in Bihar.',
+    path: '/news',
+  });
+
   const [cat, setCat] = useState('All');
   const [query, setQuery] = useState('');
 
@@ -30,6 +38,7 @@ export default function News() {
         description="Tender wins, project progress updates and our perspective on public-infrastructure trends — published as they happen."
         breadcrumbs={[{ label: 'News & Updates' }]}
         image="https://images.unsplash.com/photo-1705747894609-6a7d17a8cfb7?auto=format&fit=crop&w=2200&q=80"
+        imageAlt="Diarch Buildcon news and infrastructure project announcements"
       />
 
       <section className="py-12 lg:py-16 bg-background">

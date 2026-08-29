@@ -6,7 +6,7 @@ export const Logo = ({ variant = 'light' }) => {
     <Link to="/" className="flex items-center group">
       <img
         src={logoWebp}
-        alt="Diarch Group"
+        alt="Diarch Buildcon logo"
         className="h-7 w-auto object-contain"
         draggable={false}
       />
