@@ -36,9 +36,38 @@ export default function ProjectDetail() {
     .slice(0, 3);
 
   const gallery = project.gallery && project.gallery.length > 0 ? project.gallery : [project.image];
+  const projectUrl = `https://www.diarchbuildcon.com/projects/${project.slug}`;
+  const structuredData = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: project.title,
+      description: project.scopeDetailed || project.scope,
+      image: gallery,
+      url: projectUrl,
+      about: { '@type': 'Organization', name: project.client },
+      author: { '@type': 'Organization', name: 'Diarch Buildcon' },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.diarchbuildcon.com/' },
+        { '@type': 'ListItem', position: 2, name: 'Projects', item: 'https://www.diarchbuildcon.com/projects' },
+        { '@type': 'ListItem', position: 3, name: project.title, item: projectUrl },
+      ],
+    },
+  ];
 
   return (
     <main data-testid="page-project-detail">
+      {structuredData.map((data) => (
+        <script
+          key={data['@type']}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+        />
+      ))}
       {/* Hero */}
       <section className="relative overflow-hidden bg-navy-deep text-white">
         <div className="absolute inset-0">
@@ -49,14 +78,14 @@ export default function ProjectDetail() {
 
         <div className="relative container-page pt-12 pb-20 lg:pt-16 lg:pb-24">
           {/* Breadcrumbs */}
-          <nav className="flex items-center gap-2 text-[11.5px] tracking-[0.14em] uppercase text-white/55 mb-10">
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[11.5px] tracking-[0.14em] uppercase text-white/55 mb-10">
             <Link to="/" className="hover:text-accent transition-colors flex items-center gap-1.5">
               <HomeIcon className="w-3 h-3" /> Home
             </Link>
             <ChevronRight className="w-3 h-3 text-white/30" />
             <Link to="/projects" className="hover:text-accent transition-colors">Projects</Link>
             <ChevronRight className="w-3 h-3 text-white/30" />
-            <span className="text-accent truncate max-w-[60vw]">{project.title}</span>
+            <span aria-current="page" className="text-accent truncate max-w-[60vw]">{project.title}</span>
           </nav>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
